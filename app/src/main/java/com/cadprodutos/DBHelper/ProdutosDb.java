@@ -25,7 +25,13 @@ public class ProdutosDb extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        String produto = "CREATE TABLE produtos (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMET NOT NULL," +
+                "nomeproduto TEXT NOT NULL," +
+                "descricao TEXT NOT NULL," +
+                "quantidade INTEGER" +
+            ");";
+        db.execSQL(produto);
     }
 
     /**
