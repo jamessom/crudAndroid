@@ -56,6 +56,7 @@ public class ProdutosDb extends SQLiteOpenHelper {
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        String produto = "DROP TABLE IF EXISTS produtos;";
+        db.execSQL(produto);
     }
 }
