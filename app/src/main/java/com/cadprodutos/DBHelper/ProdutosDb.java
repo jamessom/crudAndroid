@@ -77,8 +77,8 @@ public class ProdutosDb extends SQLiteOpenHelper {
     }
 
     public ArrayList<Produtos> getLista(){
-        String table = 'produtos';
-        String [] columns = ["id", 'nomeproduto', 'drescricao', 'quantidade'];
+        String table = "produtos";
+        String [] columns = { "id", "nomeproduto", "drescricao", "quantidade" };
         Cursor cursor = getWritableDatabase().query(table, columns, null, null, null, null, null, null);
         ArrayList<Produtos> produtos = new ArrayList<Produtos>();
 
