@@ -42,9 +42,9 @@
             android:text="Quantidade" />
 
         <Button
-            android:id="@+id/btn_modificar"
+            android:id="@+id/btn_polimorfico"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cadastrar" />
+            android:text="btn" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
