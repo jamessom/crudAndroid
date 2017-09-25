@@ -66,6 +66,22 @@ public class ProdutosDb extends SQLiteOpenHelper {
         db.execSQL(produto);
     }
 
+    public void alterarProdutos(Produtos produto){
+        ContentValues values = new ContentValues();
+
+        values.put("nomeproduto", produto.getNomeProduto());
+        values.put("descrição",   produto.getDescricao());
+        values.put("quantidade",  produto.getQuantidade());
+
+        String [] args = {produto.getId().toString()};
+        getWritableDatabase().update("produtos", values, "id=?", args);
+    }
+
+    public void deletarProdutos(Produtos produto){
+        String [] args = {produto.getId().toString()};
+        getWritableDatabase().delete("produtos", "id=?", args);
+    }
+
     public void salvarProdutos(Produtos produto){
         ContentValues values = new ContentValues();
 

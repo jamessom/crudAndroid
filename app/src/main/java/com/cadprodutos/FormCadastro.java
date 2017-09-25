@@ -54,6 +54,9 @@ public class FormCadastro extends AppCompatActivity {
                 if (btn_Polimorfico.getText().toString().equals("Cadastrar")){
                     dbHelper.salvarProdutos(produto);
                     dbHelper.close();
+                }else{
+                    dbHelper.alterarProdutos(produto);
+                    dbHelper.close();
                 }
             }
         });
