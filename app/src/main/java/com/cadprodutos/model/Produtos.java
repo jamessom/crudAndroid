@@ -1,19 +1,22 @@
 package com.cadprodutos.model;
 
+import java.io.Serializable;
+
 /**
  * Created by jamess on 23/09/17.
  */
 
-public class Produtos {
+public class Produtos implements Serializable {
 
     private Long id;
     private String nomeProduto;
     private String descricao;
     private int quantidade;
 
-    public Long getId() {
-        return id;
-    }
+    @Override
+    public String toString(){ return nomeProduto.toString(); }
+
+    public Long getId() { return id; }
 
     public void setId(Long id) {
         this.id = id;

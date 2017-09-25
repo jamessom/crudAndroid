@@ -12,9 +12,9 @@ import com.cadprodutos.model.Produtos;
 
 public class FormCadastro extends AppCompatActivity {
 
-    EditText editText_NomePrdo, editText_Descricao, editText_Quantidade;
-    Button   btn_Polimorfico;
-    Produtos editarProdutos, produto;
+    EditText   editText_NomePrdo, editText_Descricao, editText_Quantidade;
+    Button     btn_Polimorfico;
+    Produtos   editarProdutos, produto;
     ProdutosDb dbHelper;
 
     @Override
@@ -22,6 +22,7 @@ public class FormCadastro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_cadastro);
 
+        produto  = new Produtos();
         dbHelper = new ProdutosDb(FormCadastro.this);
 
         Intent intent  = getIntent();
@@ -35,6 +36,13 @@ public class FormCadastro extends AppCompatActivity {
 
         if (editarProdutos != null){
             btn_Polimorfico.setText("Atualizar");
+
+            editText_NomePrdo.setText(editarProdutos.getNomeProduto());
+            editText_Descricao.setText(editarProdutos.getDescricao());
+            editText_Quantidade.setText(editarProdutos.getQuantidade()+"");
+
+            produto.setId(editarProdutos.getId());
+
         }else{
             btn_Polimorfico.setText("Cadastrar");
         }
