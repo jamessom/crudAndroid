@@ -8,10 +8,10 @@ import java.io.Serializable;
 
 public class Produtos implements Serializable {
 
-    private Long id;
+    private Long   id;
     private String nomeProduto;
     private String descricao;
-    private int quantidade;
+    private int    quantidade;
 
     @Override
     public String toString(){ return nomeProduto.toString(); }
