@@ -3,21 +3,26 @@ package com.cadprodutos;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.cadprodutos.DBHelper.ProdutosDb;
 import com.cadprodutos.model.Produtos;
 
 public class FormCadastro extends AppCompatActivity {
 
     EditText editText_NomePrdo, editText_Descricao, editText_Quantidade;
     Button   btn_Polimorfico;
-    Produtos editarProdutos;
+    Produtos editarProdutos, produto;
+    ProdutosDb dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_cadastro);
+
+        dbHelper = new ProdutosDb(FormCadastro.this);
 
         Intent intent  = getIntent();
         editarProdutos = (Produtos) intent.getSerializableExtra("produto-escolhido");
@@ -33,5 +38,24 @@ public class FormCadastro extends AppCompatActivity {
         }else{
             btn_Polimorfico.setText("Cadastrar");
         }
+
+        btn_Polimorfico.setOnClickListener(new View.OnClickListener(){
+            /**
+             * Called when a view has been clicked.
+             *
+             * @param v The view that was clicked.
+             */
+            @Override
+            public void onClick(View v) {
+                produto.setNomeProduto(editText_NomePrdo.getText().toString());
+                produto.setDescricao(editText_Descricao.getText().toString());
+                produto.setQuantidade(Integer.parseInt(editText_Quantidade.getText().toString()));
+
+                if (btn_Polimorfico.getText().toString().equals("Cadastrar")){
+                    dbHelper.salvarProdutos(produto);
+                    dbHelper.close();
+                }
+            }
+        });
     }
 }
